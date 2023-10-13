@@ -1,0 +1,40 @@
+div {
+  background-color: white;
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+.div_testo {
+  position: relative;
+}
+.text_bg {
+  position: absolute;
+  width: 100%; /* Allarga a tutta la larghezza del div */
+}
+
+h1 {
+  color: rgba(0, 0, 0, 0.116);
+  z-index: 1;
+  bottom: 0;
+}
+.line {
+  background-color: blue;
+  height: 3px;
+  width: 70px;
+  text-align: center;
+  position: absolute;
+  bottom: -5px; /* Sposta la linea al di sotto dell'h1 */
+  left: 45%; /* Centra la linea orizzontalmente */
+}
+.bg_text {
+  font-size: 5rem;
+}
+.front_text {
+  font-size: 2rem;
+}
+tr {
+  border-bottom: 1px solid black;
+}
+a {
+  text-decoration: none;
+}

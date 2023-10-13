@@ -1,0 +1,55 @@
+div {
+  padding-top: 10rem;
+  padding-bottom: 20rem;
+  background-color: none;
+}
+h3 {
+  font-size: 20px;
+}
+button {
+  margin-top: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 3px solid;
+}
+.text_change {
+  position: relative; /* Per consentire il posizionamento dell'elemento interno */
+  font-size: 3rem;
+  font-weight: bold;
+  white-space: nowrap; /* Evita il wrap del testo */
+}
+
+.text_change::after {
+  content: "|"; /* Aggiunge il carattere "|" dopo il testo */
+  display: inline-block; /* Lo rende un blocco inline */
+  width: 0; /* Nasconde il cursore inizialmente */
+  margin-left: 4px; /* Distanza tra il testo e il cursore */
+  background-color: white; /* Colore del cursore */
+  animation: blink 0.8s step-end infinite; /* Animazione di lampeggio */
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@media (max-width: 600px) {
+  .text_change {
+    font-size: 2rem;
+  }
+  div {
+    padding-top: 10rem;
+    padding-bottom: 15rem;
+  }
+}
+@media (max-width: 400px) {
+  .text_change {
+    font-size: 1.5rem;
+  }
+}

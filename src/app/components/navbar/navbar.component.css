@@ -1,0 +1,30 @@
+.navbar {
+  background: transparent;
+  transition: background 1s, color 1s;
+}
+
+.navbar.scrolled {
+  background: black;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* z-index: 1000; */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+a {
+  color: white;
+}
+
+.navbar.scrolled a:hover {
+  color: blue;
+}
+
+a:hover {
+  color: blue;
+}
+.navbar-toggler {
+  border: none;
+}
+* {
+  font-size: 18px;
+}
