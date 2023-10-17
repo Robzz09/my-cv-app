@@ -1,6 +1,6 @@
 div {
   padding-top: 10rem;
-  padding-bottom: 20rem;
+  padding-bottom: 25rem;
   background-color: none;
 }
 h3 {
@@ -15,19 +15,18 @@ button {
   border: 3px solid;
 }
 .text_change {
-  position: relative; /* Per consentire il posizionamento dell'elemento interno */
   font-size: 3rem;
   font-weight: bold;
-  white-space: nowrap; /* Evita il wrap del testo */
+  white-space: nowrap;
 }
 
 .text_change::after {
-  content: "|"; /* Aggiunge il carattere "|" dopo il testo */
-  display: inline-block; /* Lo rende un blocco inline */
-  width: 0; /* Nasconde il cursore inizialmente */
-  margin-left: 4px; /* Distanza tra il testo e il cursore */
-  background-color: white; /* Colore del cursore */
-  animation: blink 0.8s step-end infinite; /* Animazione di lampeggio */
+  content: "|";
+  display: inline-block;
+  width: 0;
+  margin-left: 4px;
+  background-color: white;
+  animation: blink 0.8s step-end infinite;
 }
 
 @keyframes blink {

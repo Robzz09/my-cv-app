@@ -1,31 +1,10 @@
-/*import { Component, Renderer2, HostListener } from '@angular/core';
-
-@Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
-})
-export class NavbarComponent {
-  constructor(private renderer: Renderer2) { }
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(event: Event) {
-    const navbar = document.querySelector(".navbar") as HTMLElement;
-    
-    if (window.scrollY >= 50) {
-      this.renderer.addClass(navbar, 'scrolled');
-    } else {
-      this.renderer.removeClass(navbar, 'scrolled');
-    }
-  }
-}
-*/
 import { Component, HostListener } from '@angular/core';
 import {
   faInstagram,
   faTwitter,
   faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -37,9 +16,27 @@ export class NavbarComponent {
   faInstagram = faInstagram;
   faFacebook = faFacebook;
   isScrolled: boolean = false;
+  isLightNavbar: boolean = false;
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: Event) {
     this.isScrolled = window.scrollY >= 200;
+  }
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.updateNavbarClass(event.url);
+      }
+    });
+  }
+  private updateNavbarClass(url: string) {
+    this.isLightNavbar = false;
+    if (
+      url.includes('contact') ||
+      url.includes('about-me') ||
+      url.includes('portfolio')
+    ) {
+      this.isLightNavbar = true;
+    }
   }
 }

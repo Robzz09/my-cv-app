@@ -15,8 +15,8 @@ export class HomeComponent implements AfterViewInit {
   ];
   currentPhraseIndex = 0;
   currentPhrase = '';
-  typingDelay = 100; // Tempo di ritardo tra i caratteri
-  erasingDelay = 50; // Tempo di ritardo tra la cancellazione
+  typingDelay = 100; 
+  erasingDelay = 50; 
   startTypingTimeout: any;
 
   ngAfterViewInit() {
@@ -42,7 +42,7 @@ export class HomeComponent implements AfterViewInit {
     } else {
       setTimeout(() => {
         this.erasePhrase();
-      }, 1000); // Pausa prima di cancellare il testo
+      }, 1000); 
     }
   }
 
@@ -63,7 +63,7 @@ export class HomeComponent implements AfterViewInit {
         (this.currentPhraseIndex + 1) % this.phrases.length;
       setTimeout(() => {
         this.startTyping();
-      }, 500); // Pausa prima di iniziare a scrivere la prossima frase
+      }, 500); 
     }
   }
 }

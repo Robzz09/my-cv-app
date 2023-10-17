@@ -1,6 +1,7 @@
 div {
-  /* background-image: url("https://brescia.unicusano.it/wp-content/uploads/2020/10/come-diventare-programmatore-impiegato-768x512.jpg"); */
-  background-color: rgb(44, 44, 44);
+  background-image: url(/assets/img/programmer.jpg);
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: overlay;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

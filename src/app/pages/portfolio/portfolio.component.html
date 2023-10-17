@@ -1,1 +1,673 @@
-<p>portfolio works!</p>
+<div class="pt-5">
+  <div class="text-center div_testo pt-5 pb-5">
+    <h1 class="bg_text text_bg"><b>PORTFOLIO</b></h1>
+    <h1 class="text-dark text_bg front_text fs-1"><b>My Work</b></h1>
+    <p class="line"></p>
+  </div>
+  <div class="modals pt-5 pb-5">
+    <div class="buttons pb-4">
+      <button
+        class="btn filter-button active2"
+        (click)="changeCategory('all')"
+        [class.active2]="selectedCategory === 'all'"
+      >
+        All
+      </button>
+      <button
+        class="btn filter-button active2"
+        (click)="changeCategory('design')"
+        [class.active2]="selectedCategory === 'design'"
+      >
+        Design
+      </button>
+      <button
+        class="btn filter-button active2"
+        (click)="changeCategory('game')"
+        [class.active2]="selectedCategory === 'game'"
+      >
+        Game
+      </button>
+    </div>
+    <div class="row col-12 pt-0 ps-4 pb-5">
+      <div
+        class="col-md-6 col-sm-6"
+        *ngIf="selectedCategory === 'all' || selectedCategory === 'design'"
+      >
+        <div class="modal1">
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#modal1"
+          >
+            <img
+              src="/assets/img/site1_img1.PNG"
+              class="rounded-1 img-button"
+            />
+          </button>
+
+          <div
+            class="modal fade bg-dark"
+            id="modal1"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg pt-0 pb-0 rounded-3">
+              <div class="modal-content pt-4 pb-0">
+                <button
+                  type="button"
+                  class="btn-close close-button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <h1
+                  class="modal-title fs-3 text-center text-dark fw-medium"
+                  id="exampleModalLabel"
+                >
+                  Project 1
+                </h1>
+                <div class="modal-body pt-0 pb-5">
+                  <div class="container pt-0 pb-0">
+                    <div class="row pt-0 pb-0">
+                      <div class="col-md-6 pt-0 pb-0">
+                        <!-- Carosello immagini -->
+                        <div
+                          id="carouselExample"
+                          class="carousel slide pt-0 pb-0"
+                          data-bs-ride="carousel"
+                        >
+                          <div class="carousel-inner pt-0 pb-3">
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 1"
+                            >
+                              <img
+                                src="/assets/img/site1_img1.PNG"
+                                width="100%"
+                              />
+                            </div>
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 2"
+                            >
+                              <img
+                                src="/assets/img/site1_img2.PNG"
+                                width="100%"
+                              />
+                            </div>
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 3"
+                            >
+                              <img
+                                src="/assets/img/site1_img3.PNG"
+                                width="100%"
+                              />
+                            </div>
+                          </div>
+                          <!-- Bottoni -->
+                          <div class="carousel-controls pt-0 pb-0">
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(1)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 1"
+                              ></div>
+                            </button>
+
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(2)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 2"
+                              ></div>
+                            </button>
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(3)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 3"
+                              ></div>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Sezione  destra -->
+
+                      <div class="col-md-6 pt-0 pb-0">
+                        <div class="section pt-0 pb-2 text-start">
+                          <h2>Project Info:</h2>
+                          <p class="text-secondary">
+                            Quidam lisque persius interesset his et, in quot
+                            quidam persequeris vim, ad mea essent possim iriure.
+                            Lisque persius interesset his et, in quot quidam
+                            persequeris vim, ad mea essent possim iriure.
+                          </p>
+                        </div>
+                        <div class="section pt-2 text-start">
+                          <h2>Project Details:</h2>
+                          <div class="text-start container pt-0 ps-0">
+                            <h3>Client: Gino Panino</h3>
+                            <hr />
+                            <h3>Technologies: HTML5, CSS3, JAVSCRIPT</h3>
+                            <hr />
+                            <h3>
+                              URL:
+                              <a
+                                class=""
+                                style="font-size: 14px"
+                                href="example.com"
+                                >example.com</a
+                              >
+                            </h3>
+                            <hr />
+                            <h3>Industry: Art & Design</h3>
+                            <hr />
+                            <h3>Date: July 1, 2022</h3>
+                            <hr />
+                            <h3>
+                              Share:
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faTwitter"
+                                  class="text-secondary icon pt-0 pb-0 ps-2 pe-2"
+                                ></fa-icon>
+                              </a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faFacebook"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-2"
+                                ></fa-icon>
+                              </a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faInstagram"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-2"
+                                ></fa-icon
+                              ></a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faGitHub"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-0"
+                                ></fa-icon>
+                              </a>
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-6 col-sm-6"
+        *ngIf="selectedCategory === 'all' || selectedCategory === 'design'"
+      >
+        <div class="modal2">
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#modal2"
+          >
+            <img
+              src="/assets/img/site2_img1.PNG"
+              class="rounded-1 img-button"
+            />
+          </button>
+          <div
+            class="modal fade bg-dark"
+            id="modal2"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel2"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg pt-0 pb-0 rounded-3">
+              <div class="modal-content pt-4 pb-0">
+                <button
+                  type="button"
+                  class="btn-close close-button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <h1
+                  class="modal-title fs-3 text-center text-dark fw-medium"
+                  id="exampleModalLabel"
+                >
+                  Project 2
+                </h1>
+                <div class="modal-body pt-0 pb-5">
+                  <div class="container pt-0 pb-0">
+                    <div class="row pt-0 pb-0">
+                      <div class="col-md-6 pt-0 pb-0">
+                        <!-- Carosello di immagini -->
+                        <div
+                          id="carouselExample"
+                          class="carousel slide pt-0 pb-0"
+                          data-bs-ride="carousel"
+                        >
+                          <div class="carousel-inner pt-0 pb-3">
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 1"
+                            >
+                              <img
+                                src="/assets/img/site2_img1.PNG"
+                                width="100%"
+                              />
+                            </div>
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 2"
+                            >
+                              <img
+                                src="/assets/img/site2_img2.PNG"
+                                width="100%"
+                              />
+                            </div>
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 3"
+                            >
+                              <img
+                                src="/assets/img/site2_img3.PNG"
+                                width="100%"
+                              />
+                            </div>
+                          </div>
+                          <!-- Bottoni circolari per il cambio di immagine -->
+                          <div class="carousel-controls pt-0 pb-0">
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(1)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 1"
+                              ></div>
+                            </button>
+
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(2)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 2"
+                              ></div>
+                            </button>
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(3)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 3"
+                              ></div>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 pt-0 pb-0">
+                        <!-- Sezione a destra -->
+                        <div class="section pt-0 pb-2 text-start">
+                          <h2>Project Info:</h2>
+                          <p class="text-secondary">
+                            Quidam lisque persius interesset his et, in quot
+                            quidam persequeris vim, ad mea essent possim iriure.
+                            Lisque persius interesset his et, in quot quidam
+                            persequeris vim, ad mea essent possim iriure.
+                          </p>
+                        </div>
+                        <div class="section pt-2 text-start">
+                          <h2>Project Details:</h2>
+                          <div class="text-start container pt-0 ps-0">
+                            <h3>Client: Hellen Joi</h3>
+                            <hr />
+                            <h3>Technologies: HTML5, CSS3, JAVSCRIPT</h3>
+                            <hr />
+                            <h3>
+                              URL:
+                              <a
+                                class=""
+                                style="font-size: 14px"
+                                href="example.com"
+                                >example.com</a
+                              >
+                            </h3>
+                            <hr />
+                            <h3>Industry: Art & Design</h3>
+                            <hr />
+                            <h3>Date: July 1, 2022</h3>
+                            <hr />
+                            <h3>
+                              Share:
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faTwitter"
+                                  class="text-secondary icon pt-0 pb-0 ps-2 pe-2"
+                                ></fa-icon>
+                              </a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faFacebook"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-2"
+                                ></fa-icon>
+                              </a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faInstagram"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-2"
+                                ></fa-icon
+                              ></a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faGitHub"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-0"
+                                ></fa-icon>
+                              </a>
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3"></div>
+      <div
+        class="col-md-6 col-sm-6"
+        *ngIf="selectedCategory === 'all' || selectedCategory === 'game'"
+      >
+        <div class="modal2">
+          <button
+            type="button"
+            class="btn"
+            data-bs-toggle="modal"
+            data-bs-target="#modal3"
+          >
+            <img
+              src="/assets/img/site3_img1.PNG"
+              class="rounded-1 img-button"
+            />
+          </button>
+          <div
+            class="modal fade bg-dark"
+            id="modal3"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel3"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg pt-0 pb-0 rounded-3">
+              <div class="modal-content pt-4 pb-0">
+                <button
+                  type="button"
+                  class="btn-close close-button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <h1
+                  class="modal-title fs-3 text-center text-dark fw-medium"
+                  id="exampleModalLabel"
+                >
+                  Project 3
+                </h1>
+                <div class="modal-body pt-0 pb-5">
+                  <div class="container pt-0 pb-0">
+                    <div class="row pt-0 pb-0">
+                      <div class="col-md-6 pt-0 pb-0">
+                        <!-- Carosello immagini -->
+                        <div
+                          id="carouselExample"
+                          class="carousel slide pt-0 pb-0"
+                          data-bs-ride="carousel"
+                        >
+                          <div class="carousel-inner pt-0 pb-3">
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 1"
+                            >
+                              <img
+                                src="/assets/img/site3_img1.PNG"
+                                width="100%"
+                              />
+                            </div>
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 2"
+                            >
+                              <img
+                                src="/assets/img/site3_img2.PNG"
+                                width="100%"
+                              />
+                            </div>
+                            <div
+                              class="carousel-item pt-2 pb-0"
+                              [class.active]="currentImage === 3"
+                            >
+                              <img
+                                src="/assets/img/site3_img3.PNG"
+                                width="100%"
+                              />
+                            </div>
+                          </div>
+                          <!-- Bottoni -->
+                          <div class="carousel-controls pt-0 pb-0">
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(1)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 1"
+                              ></div>
+                            </button>
+
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(2)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 2"
+                              ></div>
+                            </button>
+                            <button
+                              class="btn btn control-button"
+                              (click)="changeImage(3)"
+                            >
+                              <div
+                                class="control-circle"
+                                [class.active]="currentImage === 3"
+                              ></div>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Sezione destra -->
+                      <div class="col-md-6 pt-0 pb-0">
+                        <div class="section pt-0 pb-2 text-start">
+                          <h2>Project Info:</h2>
+                          <p class="text-secondary">
+                            Quidam lisque persius interesset his et, in quot
+                            quidam persequeris vim, ad mea essent possim iriure.
+                            Lisque persius interesset his et, in quot quidam
+                            persequeris vim, ad mea essent possim iriure.
+                          </p>
+                        </div>
+                        <div class="section pt-2 text-start">
+                          <h2>Project Details:</h2>
+                          <div class="text-start container pt-0 ps-0">
+                            <h3>Client: Jenny Jhonson</h3>
+                            <hr />
+                            <h3>Technologies: HTML5, CSS3, JAVSCRIPT</h3>
+                            <hr />
+                            <h3>
+                              URL:
+                              <a
+                                class=""
+                                style="font-size: 14px"
+                                href="example.com"
+                                >example.com</a
+                              >
+                            </h3>
+                            <hr />
+                            <h3>Industry: Art & Design</h3>
+                            <hr />
+                            <h3>Date: July 1, 2022</h3>
+                            <hr />
+                            <h3>
+                              Share:
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faTwitter"
+                                  class="text-secondary icon pt-0 pb-0 ps-2 pe-2"
+                                ></fa-icon>
+                              </a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faFacebook"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-2"
+                                ></fa-icon>
+                              </a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faInstagram"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-2"
+                                ></fa-icon
+                              ></a>
+                              <a href="#">
+                                <fa-icon
+                                  [icon]="faGitHub"
+                                  class="text-secondary icon pt-0 pb-0 ps-0 pe-0"
+                                ></fa-icon>
+                              </a>
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center div_testo pt-5 pb-5">
+    <h1 class="bg_text2 text_bg"><b>TESTIMONIAL</b></h1>
+    <h1 class="text-dark text_bg front_text fs-1"><b>Client Speak</b></h1>
+    <p class="line"></p>
+  </div>
+  <div class="d-flex justify-content-center align-items-center p-5 pb-3">
+    <div class="card p-5 mt-2 bg-color" *ngIf="currentCarousel === 1">
+      <div class="review-user bg-color">
+        <img src="/assets/img/person1.jpg" alt="Utente" class="user-avatar" />
+        <div class="pb-0 bg-color text-start">
+          <h2>
+            Dennis Jelloy<br />
+            <span class="" style="color: #8e9a9d">User from Naples</span>
+          </h2>
+        </div>
+      </div>
+      <div class="text-start bg-color">
+        <p class="fw-500 mb-4 text-dark">
+          “Only trying it out since a few days. But up to now excellent. Seems
+          to work flawlessly. priced simply dummy text of the printing and
+          typesetting industry.”
+        </p>
+      </div>
+      <div class="bg-color text-start">
+        <p class="star">
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+        </p>
+      </div>
+    </div>
+    <div class="card p-5 mt-2 bg-color" *ngIf="currentCarousel === 2">
+      <div class="review-user bg-color">
+        <img src="/assets/img/person2.jpg" alt="Utente" class="user-avatar" />
+        <div class="pb-0 bg-color text-start">
+          <h2>
+            Amanda Criss<br />
+            <span class="" style="color: #8e9a9d">User from UK</span>
+          </h2>
+        </div>
+      </div>
+      <div class="text-start bg-color">
+        <p class="fw-500 mb-4 text-dark">
+          “Easy to use, reasonably priced simply dummy text of the printing and
+          typesetting industry. Quidam lisque persius interesset his et, in quot
+          quidam possim iriure.”
+        </p>
+      </div>
+      <div class="bg-color text-start">
+        <p class="star">
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+        </p>
+      </div>
+    </div>
+    <div class="card p-5 mt-2 bg-color" *ngIf="currentCarousel === 3">
+      <div class="review-user bg-color">
+        <img src="/assets/img/person3.jpg" alt="Utente" class="user-avatar" />
+        <div class="pb-0 bg-color text-start">
+          <h2>
+            Miqui Liam<br />
+            <span class="" style="color: #8e9a9d">User from USA</span>
+          </h2>
+        </div>
+      </div>
+      <div class="text-start bg-color">
+        <p class="fw-500 mb-4 text-dark">
+          “I have used them twice now. Good rates, very efficient service and
+          priced simply dummy text of the printing and typesetting industry
+          quidam interesset his et. Excellent.”
+        </p>
+      </div>
+      <div class="bg-color text-start">
+        <p class="star">
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+          <fa-icon [icon]="faStar" class="text-warning"></fa-icon>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="carousel-controls pt-0 pb-5">
+    <button class="btn btn control-button" (click)="changeCarousel(1)">
+      <div class="control-circle" [class.active]="currentCarousel === 1"></div>
+    </button>
+    <button class="btn btn control-button" (click)="changeCarousel(2)">
+      <div class="control-circle" [class.active]="currentCarousel === 2"></div>
+    </button>
+    <button class="btn btn control-button" (click)="changeCarousel(3)">
+      <div class="control-circle" [class.active]="currentCarousel === 3"></div>
+    </button>
+  </div>
+</div>
