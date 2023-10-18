@@ -135,7 +135,7 @@ p {
 }
 .card {
   padding-top: 25px;
-  padding-bottom: 0;
+  padding-bottom: 10px;
   height: 19rem;
 }
 .custom-progress {
