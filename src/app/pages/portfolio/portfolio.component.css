@@ -119,10 +119,6 @@ a:hover {
   color: #0d6efd !important;
 }
 
-.icon {
-  font-size: 17px;
-}
-
 button {
   border: none;
 }
@@ -176,4 +172,22 @@ button {
 }
 * {
   font-family: Poppins, sans-serif;
+}
+.icon1,
+.icon2,
+.icon3,
+.icon4 {
+  font-size: 20px;
+}
+.icon1:hover {
+  color: rgb(0, 179, 255) !important;
+}
+.icon2:hover {
+  color: blue !important;
+}
+.icon3:hover {
+  color: rgb(255, 0, 128) !important;
+}
+.icon4:hover {
+  color: rgb(191, 0, 255) !important;
 }
