@@ -26,7 +26,8 @@ a:hover {
   border: none;
 }
 * {
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 500;
 }
 .bg-light1 {
   background-color: white;
@@ -34,7 +35,47 @@ a:hover {
 .bg-light1 a {
   color: black !important;
 }
+.bg-light1 a:hover {
+  color: #0d6efd !important ;
+}
 
 .navbar.scrolled a {
   color: white !important;
+}
+.navbar.scrolled a:hover {
+  color: #0d6efd !important;
+}
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+.baricon {
+  color: white;
+}
+.bg-light1 .baricon {
+  color: black;
+}
+.navbar.scrolled .baricon {
+  color: white !important;
+}
+a:focus {
+  color: #0d6efd !important;
+}
+
+.navbar.scrolled a:focus {
+  color: #0d6efd !important;
+}
+.bg-light1 a:focus {
+  color: #0d6efd !important;
+}
+/* .icon1,.icon2,.icon3{
+  color: ;
+} */
+.icon1:hover {
+  color: rgb(0, 179, 255) !important;
+}
+.icon2:hover {
+  color: blue !important;
+}
+.icon3:hover {
+  color: rgb(255, 0, 128) !important;
 }

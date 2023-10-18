@@ -79,7 +79,6 @@ p {
   background-color: aliceblue;
 }
 
-
 /*New code*/
 .close-button {
   position: absolute;
@@ -139,11 +138,25 @@ button {
   width: 70%;
 }
 .card {
-  width: 70%;
+  width: 60%;
   border: none;
   border-radius: 5px;
 }
-
+@media (min-width: 1200px) {
+  .card {
+    width: 50%;
+  }
+}
+@media (max-width: 767px) {
+  .card {
+    width: 70%;
+  }
+}
+@media (max-width: 500px) {
+  .card {
+    width: 90%;
+  }
+}
 .user-avatar {
   width: 60px;
   height: 60px;
@@ -160,4 +173,7 @@ button {
 }
 .star {
   font-size: 15px;
+}
+* {
+  font-family: Poppins, sans-serif;
 }

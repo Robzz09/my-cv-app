@@ -4,6 +4,7 @@ import {
   faTwitter,
   faFacebook,
 } from '@fortawesome/free-brands-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -15,6 +16,7 @@ export class NavbarComponent {
   faTwitter = faTwitter;
   faInstagram = faInstagram;
   faFacebook = faFacebook;
+  faBars = faBars;
   isScrolled: boolean = false;
   isLightNavbar: boolean = false;
 

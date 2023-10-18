@@ -13,6 +13,7 @@ import { ServicesComponent } from './pages/services/services.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     BrowserAnimationsModule,
     FontAwesomeModule,
     ProgressbarModule.forRoot(),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
