@@ -21,6 +21,7 @@ export class ContactComponent {
   faFacebook = faFacebook;
   faGitHub = faGithub;
   contactForm: FormGroup;
+  successMessage: string | null = null;
 
   constructor() {
     this.contactForm = new FormGroup({
@@ -38,6 +39,9 @@ export class ContactComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
+      this.successMessage = 'Il messaggio è stato inviato con successo!';
+      this.contactForm.reset();
+
       console.log(this.contactForm.value);
     }
   }
