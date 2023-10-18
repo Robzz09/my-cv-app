@@ -38,8 +38,6 @@ export class ContactComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      // Puoi gestire qui l'invio del modulo, ad esempio inviando i dati al tuo backend.
-      // Utilizza this.contactForm.value per ottenere i dati del modulo.
       console.log(this.contactForm.value);
     }
   }
