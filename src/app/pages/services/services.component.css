@@ -1,0 +1,96 @@
+div {
+  background-color: white;
+  text-align: start;
+}
+ .div_testo {
+  position: relative;
+} 
+ .text_bg {
+  position: absolute;
+  width: 100%;
+} 
+
+h1 {
+  color: rgba(0, 0, 0, 0.068);
+  bottom: 0;
+}
+.line {
+  background-color: rgb(14, 93, 240);
+  height: 4px;
+  width: 100px;
+  text-align: center;
+  position: absolute;
+  margin-left: 10px;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.front_text {
+  font-size: 2rem;
+}
+
+a {
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.bg_text {
+  font-size: 6rem;
+}
+@media (max-width: 767px) {
+  .div_testo {
+    padding-bottom: 1rem;
+    padding-top: 2rem;
+  }
+  .bg_text {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 500px) {
+  .bg_text {
+    font-size: 4rem;
+  }
+}
+@media (max-width: 375px) {
+  .bg_text {
+    font-size: 3rem;
+  }
+}
+
+p {
+  font-size: 18px;
+}
+
+.bg_second {
+  background-color: aliceblue;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+button {
+  border: none;
+}
+
+.bg-color {
+  background-color: aliceblue;
+}
+
+@media (min-width: 768px) {
+  .space-between {
+    justify-content: space-between;
+  }
+}
+.submit-btn {
+  width: 40%;
+}
+
+* {
+  font-family: Poppins, sans-serif;
+}
+@media (max-width: 500px) {
+  .submit-btn {
+    width: 60%;
+  }
+}

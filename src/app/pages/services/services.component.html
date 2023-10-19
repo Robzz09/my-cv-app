@@ -1,1 +1,208 @@
-<p>services works!</p>
+<div class="pt-5">
+  <div class="text-center div_testo pt-5 pb-5">
+    <h1 class="bg_text text_bg"><b>SERVICES</b></h1>
+    <h1 class="text-dark text_bg front_text fs-1"><b>Create your Quote</b></h1>
+    <p class="line"></p>
+  </div>
+</div>
+
+<div class="p-5">
+  <form (ngSubmit)="calcQuote()" #servicesForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        [(ngModel)]="model.name"
+        name="name"
+        #name="ngModel"
+      />
+      <div *ngIf="name.invalid" class="alert alert-danger">
+        Name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="surname">Surname</label>
+      <input
+        type="text"
+        class="form-control"
+        id="surname"
+        required
+        [(ngModel)]="model.surname"
+        name="surname"
+        #surname="ngModel"
+      />
+      <div *ngIf="surname.invalid" class="alert alert-danger">
+        Surname is required
+      </div>
+    </div>
+
+    <div class="form-group form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="necessDomain"
+        [(ngModel)]="model.necessDomain"
+        name="necessDomain"
+        #necessDomain="ngModel"
+      />
+      <label class="form-check-label" for="necessDomain"
+        >Domain necessity</label
+      >
+    </div>
+
+    <div class="form-group" *ngIf="model.necessDomain">
+      <label for="domainName">Domain name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="domainName"
+        required
+        [(ngModel)]="model.domainName"
+        name="domainName"
+        #domainName="ngModel"
+        (blur)="checkDomain()"
+      />
+      <div *ngIf="domainName.invalid" class="alert alert-danger">
+        Domain name is required
+      </div>
+      <div *ngIf="domainExists" class="alert alert-danger">
+        This domain already exists.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="servType">Services Type</label>
+      <select
+        class="form-control"
+        id="servType"
+        [(ngModel)]="model.servType"
+        name="servType"
+        #servType="ngModel"
+      >
+        <option value="static">Static</option>
+        <option value="cms">CMS</option>
+        <option value="e-shop">E-Shop</option>
+        <option value="gestionale">Gestionale</option>
+        <option value="i-o-t">I-O-T</option>
+      </select>
+    </div>
+
+    <div class="form-group" *ngIf="model.servType === 'e-shop'">
+      <label>Payment Types</label>
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="paypalType"
+          [(ngModel)]="model.payPalType"
+          name="payPalType"
+          #payPalType="ngModel"
+          (change)="checkSelectedFunction()"
+        />
+        <label class="form-check-label" for="paypalType">Paypal</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="cardType"
+          [(ngModel)]="model.cardType"
+          name="cardType"
+          #cardType="ngModel"
+          (change)="checkSelectedFunction()"
+        />
+        <label class="form-check-label" for="cardType">Credit Card</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="mobileType"
+          [(ngModel)]="model.mobileType"
+          name="mobileType"
+          #mobileType="ngModel"
+          (change)="checkSelectedFunction()"
+        />
+        <label class="form-check-label" for="mobileType"
+          >ApplePay & GooglePay</label
+        >
+      </div>
+      <div
+        *ngIf="model.servType === 'e-shop' && !checkSelected"
+        class="alert alert-danger"
+      >
+        Select at least one checkbox.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="deliveryDate">Delivery Date</label>
+      <input
+        type="date"
+        class="form-control"
+        id="deliveryDate"
+        [(ngModel)]="model.deliveryDate"
+        name="deliveryDate"
+        #mobileType="ngModel"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Maintenance Package</label>
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="oneMonth"
+          [(ngModel)]="model.maintenancePackage"
+          [value]="'1 month'"
+          name="maintenancePackage"
+          #maintenancePackage="ngModel"
+        />
+        <label class="form-check-label" for="oneMonth">1 Month</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="sixMonths"
+          [(ngModel)]="model.maintenancePackage"
+          [value]="'6 months'"
+          name="maintenancePackage"
+          #maintenancePackage="ngModel"
+        />
+        <label class="form-check-label" for="sixMonths">6 Months</label>
+      </div>
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="oneYear"
+          [(ngModel)]="model.maintenancePackage"
+          [value]="'1 year'"
+          name="maintenancePackage"
+          #maintenancePackage="ngModel"
+        />
+        <label class="form-check-label" for="oneYear">1 Year</label>
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="servicesForm.invalid"
+      [disabled]="!checkSelected"
+      [disabled]="domainExists"
+      (click)="generatePdf()"
+    >
+      Get a Quote
+    </button>
+  </form>
+
+  <div *ngIf="resQuote > 0">
+    <p>The quote is {{ resQuote }} €</p>
+  </div>
+</div>
