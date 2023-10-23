@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { PdfService } from 'src/app/service/pdf.service';
 
-
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
@@ -103,5 +102,32 @@ export class ServicesComponent {
       this.resQuote,
       formattedDeliveryDate
     );
+  }
+  namePattern: RegExp = /^[a-zA-Z]+$/;
+
+  validateName() {
+    const isRequired = this.model.name.trim().length >= 3;
+    const isValidPattern = this.namePattern.test(this.model.name);
+    return isRequired && isValidPattern;
+  }
+  validateSurname() {
+    const isRequired = this.model.surname.trim().length >= 3;
+    const isValidPattern = this.namePattern.test(this.model.surname);
+    return isRequired && isValidPattern;
+  }
+  validateDomain(domainName: string): boolean {
+    const noSpaceDomain = domainName.replace(/\s/g, '');
+    if (noSpaceDomain.length < 4) {
+      return false; 
+    }
+    const validCharacters = /^[a-z0-9-.]+$/;
+    return validCharacters.test(noSpaceDomain);
+  }
+  
+  isValidDomainName(): boolean {
+    if (this.model.domainName && this.validateDomain(this.model.domainName)) {
+      return true;
+    }
+    return false;
   }
 }

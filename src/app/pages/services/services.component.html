@@ -23,8 +23,8 @@
         Name is required
       </div>
 
-      <div *ngIf="model.name.trim().length < 3" class="alert alert-danger">
-        Name must be at least 3 characters.
+      <div *ngIf="name.valid && !validateName()" class="alert alert-danger">
+        Name must be at least 3 characters and contain only letters.
       </div>
     </div>
     <div class="form-group">
@@ -41,8 +41,11 @@
       <div *ngIf="surname.invalid" class="alert alert-danger">
         Surname is required
       </div>
-      <div *ngIf="model.surname.trim().length < 3" class="alert alert-danger">
-        Surname must be at least 3 characters.
+      <div
+        *ngIf="surname.valid && !validateSurname()"
+        class="alert alert-danger"
+      >
+        Surname must be at least 3 characters and contain only letters.
       </div>
     </div>
 
@@ -79,10 +82,10 @@
         This domain already exists.
       </div>
       <div
-        *ngIf="model.domainName.trim().length < 4"
+        *ngIf="model.domainName && !isValidDomainName()"
         class="alert alert-danger"
       >
-        Domain name must be at least 4 characters.
+        Invalid domain name. Check the rules for valid domain names.
       </div>
     </div>
 
