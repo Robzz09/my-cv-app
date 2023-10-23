@@ -92,17 +92,6 @@ export class ServicesComponent {
       .padStart(2, '0')}-${year}`;
     return formattedDate;
   }
-
-  generatePdf() {
-    this.calcQuote();
-    const formattedDeliveryDate = this.formatDate(this.model.deliveryDate);
-
-    this.pdfService.generatePdf(
-      this.model,
-      this.resQuote,
-      formattedDeliveryDate
-    );
-  }
   namePattern: RegExp = /^[a-zA-Z]+$/;
 
   validateName() {
@@ -118,16 +107,37 @@ export class ServicesComponent {
   validateDomain(domainName: string): boolean {
     const noSpaceDomain = domainName.replace(/\s/g, '');
     if (noSpaceDomain.length < 4) {
-      return false; 
+      return false;
+    }
+    if (
+      !noSpaceDomain.includes('.') ||
+      noSpaceDomain.split('-').length - 1 > 1
+    ) {
+      return false;
+    }
+    const afterDot = noSpaceDomain.split('.');
+    if (afterDot.length < 2 || afterDot[1].length < 2) {
+      return false;
     }
     const validCharacters = /^[a-z0-9-.]+$/;
     return validCharacters.test(noSpaceDomain);
   }
-  
+
   isValidDomainName(): boolean {
     if (this.model.domainName && this.validateDomain(this.model.domainName)) {
       return true;
     }
+
     return false;
+  }
+
+  generatePdf() {
+    this.calcQuote();
+    const formattedDeliveryDate = this.formatDate(this.model.deliveryDate);
+    this.pdfService.generatePdf(
+      this.model,
+      this.resQuote,
+      formattedDeliveryDate
+    );
   }
 }

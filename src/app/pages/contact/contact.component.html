@@ -130,17 +130,24 @@
               Send Message
             </button>
             <div
-              class="modal fade bg-dark"
+              class="modal fade modal-bg"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
               id="modal"
               tabindex="-1"
               aria-labelledby="exampleModalLabel3"
               aria-hidden="true"
             >
-              <div class="modal-dialog modal-lg pt-0 pb-0 rounded-3">
+              <div
+                class="modal-dialog modal-dialog-centered modal-lg modal-bg pt-0 pb-0 rounded-3"
+              >
                 <div class="modal-content pt-4 pb-0">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">
-                      DATI APPENA INVIATI
+                    <h1
+                      class="modal-title fs-5 text-dark"
+                      id="exampleModalLabel"
+                    >
+                      Riepilogo
                     </h1>
                     <button
                       type="button"
@@ -149,7 +156,7 @@
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div class="modal-body pt-0 pb-5">
+                  <div class="modal-body pt-3 pb-5 rounded-3">
                     <div class="container pt-0 pb-0">
                       <p>
                         Name:
@@ -168,6 +175,8 @@
                         }}</span>
                       </p>
                     </div>
+                  </div>
+                  <div class="modal-footer">
                     <p>
                       <span id="modalSucces"
                         ><strong>{{ successMessage }}</strong></span

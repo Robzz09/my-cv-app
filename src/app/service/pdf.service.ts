@@ -5,7 +5,7 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PdfService {
   constructor() {}
@@ -22,17 +22,17 @@ export class PdfService {
         { text: 'Payment Types: ' + this.getPaymentTypesLabel(model) },
         { text: 'Delivery Date: ' + formattedDeliveryDate },
         { text: 'Maintenance Package: ' + model.maintenancePackage },
-        { text: 'Total Quote: €' + resQuote, style: 'quote' }
+        { text: 'Total Quote: €' + resQuote, style: 'quote' },
       ],
       styles: {
         header: {
           fontSize: 18,
-          bold: true
+          bold: true,
         },
         quote: {
-          fontSize: 16
-        }
-      }
+          fontSize: 16,
+        },
+      },
     };
 
     pdfMake.createPdf(documentDefinition).open();
@@ -40,11 +40,11 @@ export class PdfService {
 
   getServiceTypeLabel(servType: string): string {
     const serviceTypeLabels: Record<string, string> = {
-      'static': 'Static',
-      'cms': 'CMS',
+      static: 'Static',
+      cms: 'CMS',
       'e-shop': 'E-Shop',
-      'gestionale': 'Gestionale',
-      'i-o-t': 'I-O-T'
+      gestionale: 'Gestionale',
+      'i-o-t': 'I-O-T',
     };
 
     return serviceTypeLabels[servType] || '';
@@ -64,5 +64,4 @@ export class PdfService {
 
     return paymentTypes.length > 0 ? paymentTypes.join(', ') : 'None selected';
   }
-
 }
