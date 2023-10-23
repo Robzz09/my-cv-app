@@ -36,7 +36,8 @@ export class NavbarComponent {
     if (
       url.includes('contact') ||
       url.includes('about-me') ||
-      url.includes('portfolio')
+      url.includes('portfolio') ||
+      url.includes('services')
     ) {
       this.isLightNavbar = true;
     }

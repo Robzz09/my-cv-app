@@ -21,7 +21,8 @@ export class ContactComponent {
   faFacebook = faFacebook;
   faGitHub = faGithub;
   contactForm: FormGroup;
-  successMessage: string | null = null;
+  submittedData: { name: string; email: string; message: string } | null = null;
+  successMessage: string = 'Il messaggio è stato inviato con successo!';
 
   constructor() {
     this.contactForm = new FormGroup({
@@ -39,10 +40,30 @@ export class ContactComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      this.successMessage = 'Il messaggio è stato inviato con successo!';
+      // this.successMessage = 'Il messaggio è stato inviato con successo!';
       this.contactForm.reset();
+      this.submitForm();
+      // console.log(this.contactForm.value);
+    }
+  }
+  submitForm() {
+    const name = this.contactForm.get('name')?.value;
+    const email = this.contactForm.get('email')?.value;
+    const message = this.contactForm.get('message')?.value;
 
-      console.log(this.contactForm.value);
+    const modalName = document.getElementById('modalName');
+    const modalEmail = document.getElementById('modalEmail');
+    const modalMessage = document.getElementById('modalMessage');
+    const modalSucces = document.getElementById('modalSucces');
+
+    if (modalName && modalEmail && modalMessage && modalSucces) {
+      modalName.textContent = name;
+      modalEmail.textContent = email;
+      modalMessage.textContent = message;
+      modalSucces.textContent = this.successMessage;
+
+      const modal = document.getElementById('modal');
+      //modal.style.display = 'block';
     }
   }
 }

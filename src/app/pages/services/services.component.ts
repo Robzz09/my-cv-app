@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PdfService } from 'src/app/service/pdf.service';
 
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
+  styleUrls: ['./services.component.css'],
 })
 export class ServicesComponent {
-
   tomorrow: string = '';
   resQuote: number = 0;
   checkSelected: boolean = false;
@@ -31,7 +29,7 @@ export class ServicesComponent {
     payPalType: false,
     cardType: false,
     mobileType: false,
-    deliveryDate: null,
+    deliveryDate: new Date(),
     maintenancePackage: '1 month',
   };
 
@@ -84,6 +82,7 @@ export class ServicesComponent {
       this.resQuote += 1800;
     }
   }
+
   formatDate(date: Date): string {
     const day = date.getDate();
     const month = date.getMonth() + 1;

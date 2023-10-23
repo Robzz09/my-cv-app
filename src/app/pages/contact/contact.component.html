@@ -58,12 +58,9 @@
           </div>
         </div>
       </div>
-
+      <!-- UPGRADED FORM  -->
       <div class="col-md-8 col-xl-8 col-sm-12 pb-4 pt-4 bg-light">
         <h2 class="fs-4">SEND US A NOTE</h2>
-        <div *ngIf="successMessage" class="alert alert-success">
-          {{ successMessage }}
-        </div>
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="row">
           <div class="mb-3 col-md-6 bg-light">
             <input
@@ -121,13 +118,65 @@
               Message is required and must be at least 5 characters long.
             </div>
           </div>
+
           <div class="text-center bg-light">
             <button
-              type="submit"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#modal"
               class="btn btn-primary rounded-pill pt-3 pb-3 ps-4 pe-4 shadow submit-btn"
+              [disabled]="contactForm.invalid"
             >
               Send Message
             </button>
+            <div
+              class="modal fade bg-dark"
+              id="modal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel3"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-lg pt-0 pb-0 rounded-3">
+                <div class="modal-content pt-4 pb-0">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">
+                      DATI APPENA INVIATI
+                    </h1>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body pt-0 pb-5">
+                    <div class="container pt-0 pb-0">
+                      <p>
+                        Name:
+                        <span id="modalName">{{ contactForm.value.name }}</span>
+                      </p>
+                      <p>
+                        Email:
+                        <span id="modalEmail">{{
+                          contactForm.value.email
+                        }}</span>
+                      </p>
+                      <p>
+                        Message:
+                        <span id="modalMessage">{{
+                          contactForm.value.message
+                        }}</span>
+                      </p>
+                    </div>
+                    <p>
+                      <span id="modalSucces"
+                        ><strong>{{ successMessage }}</strong></span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </form>
       </div>
