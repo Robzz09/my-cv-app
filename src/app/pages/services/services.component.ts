@@ -35,7 +35,7 @@ export class ServicesComponent {
     maintenancePackage: '1 month',
   };
 
-  domains = ['ntt.com', 'ntt.it', 'lazio.net', 'google.com', 'instagram.com'];
+  domains = ['ntt.com', 'lazio.net', 'google.com', 'instagram.com'];
 
   namePattern: RegExp = /^[a-zA-Z]+$/;
 
@@ -64,12 +64,12 @@ export class ServicesComponent {
         this.isValidDomainName() &&
         this.domains.includes(this.model.domainName)
       ) {
-        return true; 
+        return true;
       } else {
-        return false; 
+        return false;
       }
     } else {
-      return false; 
+      return false;
     }
   }
 
@@ -107,7 +107,7 @@ export class ServicesComponent {
 
   validateDomain(domainName: string): boolean {
     if (this.model.necessDomain) {
-      const noSpaceDomain = domainName.replace(/\s/g, '');
+      const noSpaceDomain = domainName.replace(/\s/g, ' ');
       if (noSpaceDomain.length < 4) {
         this.isDisabled = true;
         return false;
@@ -139,7 +139,6 @@ export class ServicesComponent {
   }
   checkDomain() {
     if (this.model.necessDomain) {
-      this.isDisabled = true;
       this.domainExists = this.domains.includes(this.model.domainName);
       this.validateAndSetDisabled();
     } else {
@@ -155,24 +154,6 @@ export class ServicesComponent {
 
     return false;
   }
-  /* updateIsDisabled() {
-     this.validateNames();
-     if (!this.isValidDomainName()) {
-       this.isDisabled = true;
-     }
-     if (this.model.servType === 'e-shop') {
-       this.isDisabled = this.isDisabled || !this.checkSelected;
-     }
-
-     if (
-       (!this.model.necessDomain && this.model.servType === 'static') ||
-       this.model.servType === 'cms' ||
-       this.model.servType === 'gestionale' ||
-       this.model.servType === 'i-o-t'
-     ) {
-       this.isDisabled = false;
-     }
- }*/
 
   calcQuote() {
     this.resQuote = 0;

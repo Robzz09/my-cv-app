@@ -235,7 +235,8 @@
       class="btn btn-primary"
       [disabled]="!validateNames()"
       [disabled]="isDisabled"
-      [disabled]="model.necessDomain && (!isValidDomainName() || domainExists)"
+      [disabled]="model.necessDomain && !isValidDomainName()"
+      [disabled]="model.necessDomain && domainExists"
       [disabled]="
         !validateNames() ||
         (model.servType === 'e-shop' &&
