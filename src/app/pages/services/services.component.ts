@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faBedPulse } from '@fortawesome/free-solid-svg-icons';
 import { PdfService } from 'src/app/service/pdf.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class ServicesComponent {
   resQuote: number = 0;
   checkSelected: boolean = false;
   domainExists: boolean = false;
+  isDisabled: boolean = true;
+  checkboxTouched: boolean = false;
 
   constructor(private pdfService: PdfService) {
     const now = new Date();
@@ -25,7 +28,7 @@ export class ServicesComponent {
     necessDomain: false,
     domainName: '',
     servType: 'static',
-    payPalType: false,
+    payPalType: true,
     cardType: false,
     mobileType: false,
     deliveryDate: new Date(),
@@ -34,15 +37,142 @@ export class ServicesComponent {
 
   domains = ['ntt.com', 'ntt.it', 'lazio.net', 'google.com', 'instagram.com'];
 
-  checkSelectedFunction() {
-    this.checkSelected =
-      this.model.servType === 'e-shop' &&
-      (this.model.payPalType || this.model.cardType || this.model.mobileType);
+  namePattern: RegExp = /^[a-zA-Z]+$/;
+
+  validateName() {
+    const isRequired = this.model.name.trim().length >= 3;
+    const isValidPattern = this.namePattern.test(this.model.name);
+    return isRequired && isValidPattern;
   }
 
-  checkDomain() {
-    this.domainExists = this.domains.includes(this.model.domainName);
+  validateSurname() {
+    const isRequired = this.model.surname.trim().length >= 3;
+    const isValidPattern = this.namePattern.test(this.model.surname);
+    return isRequired && isValidPattern;
   }
+
+  validateNames() {
+    const isNameValid = this.validateName();
+    const isSurnameValid = this.validateSurname();
+
+    return isNameValid && isSurnameValid;
+  }
+
+  domainControl(): boolean {
+    if (this.model.necessDomain) {
+      if (
+        this.isValidDomainName() &&
+        this.domains.includes(this.model.domainName)
+      ) {
+        return true; 
+      } else {
+        return false; 
+      }
+    } else {
+      return false; 
+    }
+  }
+
+  checkSelectedFunction(): boolean {
+    if (this.model.servType === 'e-shop') {
+      return (
+        this.model.payPalType || this.model.cardType || this.model.mobileType
+      );
+    }
+    return true;
+  }
+  onCheckboxChange(): void {
+    this.checkboxTouched = true;
+    this.validateAndSetDisabled();
+  }
+
+  validateAndSetDisabled() {
+    this.isDisabled = !(
+      this.validateNames() &&
+      this.isValidDomainName() &&
+      this.checkSelectedFunction()
+    );
+  }
+
+  formatDate(date: Date): string {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    const formattedDate = `${day.toString().padStart(2, '0')}-${month
+      .toString()
+      .padStart(2, '0')}-${year}`;
+    return formattedDate;
+  }
+
+  validateDomain(domainName: string): boolean {
+    if (this.model.necessDomain) {
+      const noSpaceDomain = domainName.replace(/\s/g, '');
+      if (noSpaceDomain.length < 4) {
+        this.isDisabled = true;
+        return false;
+      }
+      if (
+        !noSpaceDomain.includes('.') ||
+        noSpaceDomain.split('-').length - 1 > 1
+      ) {
+        this.isDisabled = true;
+        return false;
+      }
+
+      const afterDot = noSpaceDomain.split('.');
+      if (afterDot.length < 2 || afterDot[1].length < 2) {
+        this.isDisabled = true;
+        return false;
+      }
+      const validCharacters = /^[a-z0-9-.]+$/;
+
+      if (!validCharacters.test(noSpaceDomain)) {
+        this.isDisabled = true;
+        return false;
+      }
+    } else {
+      this.isDisabled = false;
+    }
+
+    return true;
+  }
+  checkDomain() {
+    if (this.model.necessDomain) {
+      this.isDisabled = true;
+      this.domainExists = this.domains.includes(this.model.domainName);
+      this.validateAndSetDisabled();
+    } else {
+      this.domainExists = false;
+      this.validateAndSetDisabled();
+    }
+  }
+
+  isValidDomainName(): boolean {
+    if (this.model.domainName && this.validateDomain(this.model.domainName)) {
+      return true;
+    }
+
+    return false;
+  }
+  /* updateIsDisabled() {
+     this.validateNames();
+     if (!this.isValidDomainName()) {
+       this.isDisabled = true;
+     }
+     if (this.model.servType === 'e-shop') {
+       this.isDisabled = this.isDisabled || !this.checkSelected;
+     }
+
+     if (
+       (!this.model.necessDomain && this.model.servType === 'static') ||
+       this.model.servType === 'cms' ||
+       this.model.servType === 'gestionale' ||
+       this.model.servType === 'i-o-t'
+     ) {
+       this.isDisabled = false;
+     }
+ }*/
 
   calcQuote() {
     this.resQuote = 0;
@@ -82,62 +212,13 @@ export class ServicesComponent {
     }
   }
 
-  formatDate(date: Date): string {
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-
-    const formattedDate = `${day.toString().padStart(2, '0')}-${month
-      .toString()
-      .padStart(2, '0')}-${year}`;
-    return formattedDate;
-  }
-  namePattern: RegExp = /^[a-zA-Z]+$/;
-
-  validateName() {
-    const isRequired = this.model.name.trim().length >= 3;
-    const isValidPattern = this.namePattern.test(this.model.name);
-    return isRequired && isValidPattern;
-  }
-  validateSurname() {
-    const isRequired = this.model.surname.trim().length >= 3;
-    const isValidPattern = this.namePattern.test(this.model.surname);
-    return isRequired && isValidPattern;
-  }
-  validateDomain(domainName: string): boolean {
-    const noSpaceDomain = domainName.replace(/\s/g, '');
-    if (noSpaceDomain.length < 4) {
-      return false;
-    }
-    if (
-      !noSpaceDomain.includes('.') ||
-      noSpaceDomain.split('-').length - 1 > 1
-    ) {
-      return false;
-    }
-    const afterDot = noSpaceDomain.split('.');
-    if (afterDot.length < 2 || afterDot[1].length < 2) {
-      return false;
-    }
-    const validCharacters = /^[a-z0-9-.]+$/;
-    return validCharacters.test(noSpaceDomain);
-  }
-
-  isValidDomainName(): boolean {
-    if (this.model.domainName && this.validateDomain(this.model.domainName)) {
-      return true;
-    }
-
-    return false;
-  }
-
   generatePdf() {
     this.calcQuote();
-    const formattedDeliveryDate = this.formatDate(this.model.deliveryDate);
+    // const formattedDeliveryDate = this.formatDate(this.model.deliveryDate);
     this.pdfService.generatePdf(
       this.model,
-      this.resQuote,
-      formattedDeliveryDate
+      this.resQuote
+      // formattedDeliveryDate
     );
   }
 }
