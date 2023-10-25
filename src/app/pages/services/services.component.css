@@ -2,13 +2,13 @@ div {
   background-color: white;
   text-align: start;
 }
- .div_testo {
+.div_testo {
   position: relative;
-} 
- .text_bg {
+}
+.text_bg {
   position: absolute;
   width: 100%;
-} 
+}
 
 h1 {
   color: rgba(0, 0, 0, 0.068);
@@ -83,14 +83,22 @@ button {
   }
 }
 .submit-btn {
-  width: 40%;
+  width: 20%;
 }
 
 * {
   font-family: Poppins, sans-serif;
 }
-@media (max-width: 500px) {
+
+@media (max-width: 767px) {
   .submit-btn {
     width: 60%;
   }
+}
+label {
+  font-size: 16px;
+  padding-bottom: 8px;
+}
+.alert {
+  margin-top: 10px;
 }

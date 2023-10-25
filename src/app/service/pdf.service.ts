@@ -44,7 +44,7 @@ export class PdfService {
         },
         quote: {
           fontSize: 16,
-          marginBottom: 10,
+          marginTop: 10,
         },
       },
     };

@@ -4,253 +4,260 @@
     <h1 class="text-dark text_bg front_text fs-1"><b>Create your Quote</b></h1>
     <p class="line"></p>
   </div>
-</div>
 
-<div class="p-5">
-  <form (ngSubmit)="calcQuote()" #servicesForm="ngForm">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="name"
-        required
-        [(ngModel)]="model.name"
-        name="name"
-        #name="ngModel"
-      />
-      <div *ngIf="name.invalid" class="alert alert-danger">
-        Name is required
-      </div>
-
-      <div *ngIf="name.valid && !validateName()" class="alert alert-danger">
-        Name must be at least 3 characters and contain only letters.
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="surname">Surname</label>
-      <input
-        type="text"
-        class="form-control"
-        id="surname"
-        required
-        [(ngModel)]="model.surname"
-        name="surname"
-        #surname="ngModel"
-      />
-      <div *ngIf="surname.invalid" class="alert alert-danger">
-        Surname is required
-      </div>
-      <div
-        *ngIf="surname.valid && !validateSurname()"
-        class="alert alert-danger"
-      >
-        Surname must be at least 3 characters and contain only letters.
-      </div>
-    </div>
-
-    <div class="form-group form-check">
-      <input
-        type="checkbox"
-        class="form-check-input"
-        id="necessDomain"
-        [(ngModel)]="model.necessDomain"
-        name="necessDomain"
-        #necessDomain="ngModel"
-      />
-      <label class="form-check-label" for="necessDomain"
-        >Domain necessity</label
-      >
-    </div>
-
-    <div class="form-group" *ngIf="model.necessDomain">
-      <label for="domainName">Domain name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="domainName"
-        required
-        [(ngModel)]="model.domainName"
-        name="domainName"
-        #domainName="ngModel"
-        (ngModelChange)="validateAndSetDisabled(); checkDomain()"
-      />
-      <div
-        *ngIf="model.necessDomain && domainName.invalid"
-        class="alert alert-danger"
-      >
-        Domain name is required
-      </div>
-      <div
-        *ngIf="model.necessDomain && domainExists"
-        class="alert alert-danger"
-      >
-        This domain already exists.
-      </div>
-      <div
-        *ngIf="model.necessDomain && model.domainName && !isValidDomainName()"
-        class="alert alert-danger"
-      >
-        Invalid domain name. Check the rules for valid domain names.
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="servType">Services Type</label>
-      <select
-        class="form-control"
-        id="servType"
-        [(ngModel)]="model.servType"
-        name="servType"
-        #servType="ngModel"
-      >
-        <option value="static">Static</option>
-        <option value="cms">CMS</option>
-        <option value="e-shop">E-Shop</option>
-        <option value="gestionale">Gestionale</option>
-        <option value="i-o-t">I-O-T</option>
-      </select>
-    </div>
-
-    <div class="form-group" *ngIf="model.servType === 'e-shop'">
-      <label>Payment Type</label>
-      <div class="form-check">
+  <div class="p-5 container">
+    <form (ngSubmit)="calcQuote()" #servicesForm="ngForm" class="row">
+      <div class="form-group col-md-6 col-sm-12">
+        <label for="name">Name</label>
         <input
-          type="checkbox"
-          class="form-check-input"
-          id="paypalType"
-          [(ngModel)]="model.payPalType"
-          name="payPalType"
-          #payPalType="ngModel"
-          (change)="onCheckboxChange()"
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="model.name"
+          name="name"
+          #name="ngModel"
         />
-        <label class="form-check-label" for="paypalType">Paypal</label>
-      </div>
-      <div class="form-check">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="cardType"
-          [(ngModel)]="model.cardType"
-          name="cardType"
-          #cardType="ngModel"
-          (change)="onCheckboxChange()"
-        />
-        <label class="form-check-label" for="cardType">Credit Card</label>
-      </div>
-      <div class="form-check">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          id="mobileType"
-          [(ngModel)]="model.mobileType"
-          name="mobileType"
-          #mobileType="ngModel"
-          (change)="onCheckboxChange()"
-        />
-        <label class="form-check-label" for="mobileType"
-          >ApplePay & GooglePay</label
-        >
-      </div>
-      <div
-        *ngIf="
-          model.servType === 'e-shop' &&
-          checkboxTouched &&
-          !model.payPalType &&
-          !model.cardType &&
-          !model.mobileType
-        "
-        class="alert alert-danger"
-      >
-        Select at least one checkbox.
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label for="deliveryDate">Delivery Date</label>
-      <input
-        type="date"
-        class="form-control"
-        id="deliveryDate"
-        [(ngModel)]="model.deliveryDate"
-        name="deliveryDate"
-        #deliveryDate="ngModel"
-        required
-        [min]="tomorrow"
-      />
-      <div
-        *ngIf="
-          deliveryDate.invalid && (deliveryDate.dirty || deliveryDate.touched)
-        "
-        class="alert alert-danger"
-      >
-        <div *ngIf="deliveryDate.errors?.['required']">
-          Delivery Date is required
+        <div *ngIf="name.invalid" class="alert alert-danger">
+          Name is required
+        </div>
+        <div *ngIf="name.valid && !validateName()" class="alert alert-danger">
+          Name must be at least 3 characters and contain only letters.
         </div>
       </div>
+      <div class="form-group col-md-6 col-sm-12">
+        <label for="surname">Surname</label>
+        <input
+          type="text"
+          class="form-control"
+          id="surname"
+          required
+          [(ngModel)]="model.surname"
+          name="surname"
+          #surname="ngModel"
+        />
+        <div *ngIf="surname.invalid" class="alert alert-danger">
+          Surname is required
+        </div>
+        <div
+          *ngIf="surname.valid && !validateSurname()"
+          class="alert alert-danger"
+        >
+          Surname must be at least 3 characters and contain only letters.
+        </div>
+      </div>
+      <div class="form-check form-switch ps-5 pt-3 pb-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="necessDomain"
+          [(ngModel)]="model.necessDomain"
+          name="necessDomain"
+          #necessDomain="ngModel"
+        />
+        <label
+          [ngClass]="{
+            'text-danger': !model.necessDomain,
+            'text-success': model.necessDomain
+          }"
+          class="form-check-label"
+          for="necessDomain"
+          >Domain</label
+        >
+      </div>
+
+      <div class="form-group" *ngIf="model.necessDomain">
+        <label for="domainName">Domain name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="domainName"
+          required
+          [(ngModel)]="model.domainName"
+          name="domainName"
+          #domainName="ngModel"
+          (ngModelChange)="validateAndSetDisabled(); checkDomain()"
+        />
+        <div
+          *ngIf="model.necessDomain && domainName.invalid"
+          class="alert alert-danger"
+        >
+          Domain name is required
+        </div>
+        <div
+          *ngIf="model.necessDomain && domainExists"
+          class="alert alert-danger"
+        >
+          This domain already exists.
+        </div>
+        <div
+          *ngIf="model.necessDomain && model.domainName && !isValidDomainName()"
+          class="alert alert-danger"
+        >
+          Invalid domain name. Check the rules for valid domain names.
+        </div>
+      </div>
+
+      <div class="form-group col-md-6 col-sm-12 pb-3">
+        <label for="servType">Services Type</label>
+        <select
+          class="form-control"
+          id="servType"
+          [(ngModel)]="model.servType"
+          name="servType"
+          #servType="ngModel"
+        >
+          <option value="static">Static</option>
+          <option value="cms">CMS</option>
+          <option value="e-shop">E-Shop</option>
+          <option value="gestionale">Gestionale</option>
+          <option value="i-o-t">I-O-T</option>
+        </select>
+      </div>
+
+      <div class="form-group pb-3 pb-3" *ngIf="model.servType === 'e-shop'">
+        <label>Payment Type</label>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="paypalType"
+            [(ngModel)]="model.payPalType"
+            name="payPalType"
+            #payPalType="ngModel"
+            (change)="onCheckboxChange()"
+          />
+          <label class="form-check-label" for="paypalType">Paypal</label>
+        </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="cardType"
+            [(ngModel)]="model.cardType"
+            name="cardType"
+            #cardType="ngModel"
+            (change)="onCheckboxChange()"
+          />
+          <label class="form-check-label" for="cardType">Credit Card</label>
+        </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="mobileType"
+            [(ngModel)]="model.mobileType"
+            name="mobileType"
+            #mobileType="ngModel"
+            (change)="onCheckboxChange()"
+          />
+          <label class="form-check-label" for="mobileType"
+            >ApplePay & GooglePay</label
+          >
+        </div>
+        <div
+          *ngIf="
+            model.servType === 'e-shop' &&
+            checkboxTouched &&
+            !model.payPalType &&
+            !model.cardType &&
+            !model.mobileType
+          "
+          class="alert alert-danger"
+        >
+          Select at least one checkbox.
+        </div>
+      </div>
+
+      <div class="form-group col-md-6 col-sm-12 pb-3">
+        <label for="deliveryDate">Delivery Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="deliveryDate"
+          [(ngModel)]="model.deliveryDate"
+          name="deliveryDate"
+          #deliveryDate="ngModel"
+          required
+          [min]="tomorrow"
+        />
+        <div
+          *ngIf="
+            deliveryDate.invalid && (deliveryDate.dirty || deliveryDate.touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="deliveryDate.errors?.['required']">
+            Delivery Date is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Maintenance Package</label>
+        <div class="form-check">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="oneMonth"
+            [(ngModel)]="model.maintenancePackage"
+            [value]="'1 month'"
+            name="maintenancePackage"
+            #maintenancePackage="ngModel"
+          />
+          <label class="form-check-label" for="oneMonth">1 Month</label>
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="sixMonths"
+            [(ngModel)]="model.maintenancePackage"
+            [value]="'6 months'"
+            name="maintenancePackage"
+            #maintenancePackage="ngModel"
+          />
+          <label class="form-check-label" for="sixMonths">6 Months</label>
+        </div>
+        <div class="form-check">
+          <input
+            type="radio"
+            class="form-check-input"
+            id="oneYear"
+            [(ngModel)]="model.maintenancePackage"
+            [value]="'1 year'"
+            name="maintenancePackage"
+            #maintenancePackage="ngModel"
+          />
+          <label class="form-check-label" for="oneYear">1 Year</label>
+        </div>
+      </div>
+      <div class="text-center pt-5">
+        <button
+          type="submit"
+          class="btn btn-primary submit-btn"
+          [disabled]="!validateNames()"
+          [disabled]="isDisabled"
+          [disabled]="model.necessDomain && !isValidDomainName()"
+          [disabled]="model.necessDomain && domainExists"
+          [disabled]="
+            !validateNames() ||
+            (model.servType === 'e-shop' &&
+              !model.payPalType &&
+              !model.cardType &&
+              !model.mobileType)
+          "
+          (click)="generatePdf()"
+        >
+          Get a Quote
+        </button>
+      </div>
+    </form>
+
+    <div *ngIf="resQuote > 0">
+      <p>The quote is {{ resQuote }} €</p>
     </div>
-
-    <div class="form-group">
-      <label>Maintenance Package</label>
-      <div class="form-check">
-        <input
-          type="radio"
-          class="form-check-input"
-          id="oneMonth"
-          [(ngModel)]="model.maintenancePackage"
-          [value]="'1 month'"
-          name="maintenancePackage"
-          #maintenancePackage="ngModel"
-        />
-        <label class="form-check-label" for="oneMonth">1 Month</label>
-      </div>
-      <div class="form-check">
-        <input
-          type="radio"
-          class="form-check-input"
-          id="sixMonths"
-          [(ngModel)]="model.maintenancePackage"
-          [value]="'6 months'"
-          name="maintenancePackage"
-          #maintenancePackage="ngModel"
-        />
-        <label class="form-check-label" for="sixMonths">6 Months</label>
-      </div>
-      <div class="form-check">
-        <input
-          type="radio"
-          class="form-check-input"
-          id="oneYear"
-          [(ngModel)]="model.maintenancePackage"
-          [value]="'1 year'"
-          name="maintenancePackage"
-          #maintenancePackage="ngModel"
-        />
-        <label class="form-check-label" for="oneYear">1 Year</label>
-      </div>
-    </div>
-
-    <button
-      type="submit"
-      class="btn btn-primary"
-      [disabled]="!validateNames()"
-      [disabled]="isDisabled"
-      [disabled]="model.necessDomain && !isValidDomainName()"
-      [disabled]="model.necessDomain && domainExists"
-      [disabled]="
-        !validateNames() ||
-        (model.servType === 'e-shop' &&
-          !model.payPalType &&
-          !model.cardType &&
-          !model.mobileType)
-      "
-      (click)="generatePdf()"
-    >
-      Get a Quote
-    </button>
-  </form>
-
-  <div *ngIf="resQuote > 0">
-    <p>The quote is {{ resQuote }} €</p>
   </div>
 </div>
