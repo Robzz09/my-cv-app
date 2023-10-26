@@ -112,10 +112,7 @@ export class ServicesComponent {
         this.isDisabled = true;
         return false;
       }
-      if (
-        !noSpaceDomain.includes('.') ||
-        noSpaceDomain.split('-').length - 1 > 1
-      ) {
+      if (!noSpaceDomain.includes('.') || noSpaceDomain.split('-').length > 1) {
         this.isDisabled = true;
         return false;
       }
@@ -128,6 +125,14 @@ export class ServicesComponent {
       const validCharacters = /^[a-z0-9-.]+$/;
 
       if (!validCharacters.test(noSpaceDomain)) {
+        this.isDisabled = true;
+        return false;
+      }
+      if (
+        noSpaceDomain.includes('..') ||
+        noSpaceDomain.includes('.-') ||
+        noSpaceDomain.includes('-.')
+      ) {
         this.isDisabled = true;
         return false;
       }

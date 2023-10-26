@@ -19,7 +19,7 @@
           #name="ngModel"
         />
 
-        <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+        <div *ngIf="name.invalid" class="alert alert-danger">
           Name is required
         </div>
         <div *ngIf="name.valid && !validateName()" class="alert alert-danger">
@@ -37,7 +37,7 @@
           name="surname"
           #surname="ngModel"
         />
-        <div *ngIf="surname.invalid && name.touched" class="alert alert-danger">
+        <div *ngIf="surname.invalid" class="alert alert-danger">
           Surname is required
         </div>
         <div
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="form-check form-switch ps-5 pt-3 pb-3 col-md-6 col-sm-12">
+      <div class="form-check form-switch ps-5 pt-3 col-md-6 col-sm-12">
         <input
           class="form-check-input"
           type="checkbox"
@@ -69,7 +69,7 @@
         >
       </div>
       <div
-        class="form-group pt-3 pb-3 col-md-6 col-sm-12"
+        class="form-group pt-3 col-md-6 col-sm-12"
         *ngIf="model.necessDomain"
       >
         <label for="domainName">Domain name</label>
@@ -84,7 +84,7 @@
           (ngModelChange)="validateAndSetDisabled(); checkDomain()"
         />
         <div
-          *ngIf="model.necessDomain && domainName.invalid && domainName.touched"
+          *ngIf="model.necessDomain && domainName.invalid"
           class="alert alert-danger"
         >
           Domain name is required
@@ -103,7 +103,7 @@
         </div>
       </div>
 
-      <div class="form-group col-md-6 col-sm-12 pb-3">
+      <div class="form-group col-md-6 col-sm-12 pb-3 pt-3">
         <label for="servType">Services Type</label>
         <select
           class="form-control"
@@ -120,7 +120,10 @@
         </select>
       </div>
 
-      <div class="form-group pb-3 pb-3" *ngIf="model.servType === 'e-shop'">
+      <div
+        class="form-group pb-3 pt-3 col-md-6 col-sm-12"
+        *ngIf="model.servType === 'e-shop'"
+      >
         <label>Payment Type</label>
         <div class="form-check">
           <input
@@ -174,7 +177,7 @@
         </div>
       </div>
 
-      <div class="form-group col-md-6 col-sm-12 pb-3">
+      <div class="form-group col-md-6 col-sm-12 pb-3 pt-3">
         <label for="deliveryDate">Delivery Date</label>
         <input
           type="date"
@@ -243,9 +246,9 @@
           class="btn btn-primary submit-btn"
           [disabled]="!validateNames()"
           [disabled]="isDisabled"
-          [disabled]="model.necessDomain && !isValidDomainName()"
           [disabled]="model.necessDomain && domainExists"
           [disabled]="
+            (model.necessDomain && !isValidDomainName()) ||
             !validateNames() ||
             (model.servType === 'e-shop' &&
               !model.payPalType &&
