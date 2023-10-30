@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { faBedPulse } from '@fortawesome/free-solid-svg-icons';
-import { PdfService } from 'src/app/service/pdf.service';
+import { PdfService } from 'src/app/service/pdf/pdf.service';
 
 @Component({
   selector: 'app-services',

@@ -10,6 +10,7 @@
   top: 0;
   width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.5s ease;
 }
 a {
   color: white;
@@ -67,9 +68,7 @@ a:focus {
 .bg-light1 a:focus {
   color: #0d6efd !important;
 }
-/* .icon1,.icon2,.icon3{
-  color: ;
-} */
+
 .icon1:hover {
   color: rgb(0, 179, 255) !important;
 }
@@ -78,4 +77,14 @@ a:focus {
 }
 .icon3:hover {
   color: rgb(255, 0, 128) !important;
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

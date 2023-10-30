@@ -14,6 +14,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PaymentCardsComponent } from './pages/payment-cards/payment-cards/payment-cards.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     PortfolioComponent,
     ServicesComponent,
     ContactComponent,
+    PaymentCardsComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ProgressbarModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

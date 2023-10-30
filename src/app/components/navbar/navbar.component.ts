@@ -37,7 +37,8 @@ export class NavbarComponent {
       url.includes('contact') ||
       url.includes('about-me') ||
       url.includes('portfolio') ||
-      url.includes('services')
+      url.includes('services')||
+      url.includes('payment-cards')
     ) {
       this.isLightNavbar = true;
     }
