@@ -22,7 +22,7 @@ export class NavbarComponent {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: Event) {
-    this.isScrolled = window.scrollY >= 200;
+    this.isScrolled = window.scrollY >= 150;
   }
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
@@ -37,7 +37,7 @@ export class NavbarComponent {
       url.includes('contact') ||
       url.includes('about-me') ||
       url.includes('portfolio') ||
-      url.includes('services')||
+      url.includes('services') ||
       url.includes('payment-cards')
     ) {
       this.isLightNavbar = true;
