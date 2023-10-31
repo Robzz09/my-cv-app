@@ -22,4 +22,5 @@ export class AboutMeComponent {
   progressValueBootstrap: number = 75;
   progressValueReact: number = 40;
   maxValue: number = 100;
+
 }

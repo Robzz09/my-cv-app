@@ -28,6 +28,7 @@ export class NavbarComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.updateNavbarClass(event.url);
+        window.scrollTo(0, 0);
       }
     });
   }
