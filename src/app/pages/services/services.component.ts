@@ -37,6 +37,7 @@ export class ServicesComponent {
 
   domains = ['ntt.com', 'lazio.net', 'google.com', 'instagram.com'];
 
+  //regular expression (regex) 
   namePattern: RegExp = /^[a-zA-Z]+$/;
 
   validateName() {

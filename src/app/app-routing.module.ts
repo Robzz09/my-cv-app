@@ -5,7 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { PortfolioComponent } from './pages/portfolio/portfolio.component';
-import { PaymentCardsComponent } from './pages/payment-cards/payment-cards/payment-cards.component';
+import { PaymentCardsComponent } from './pages/payment-cards/payment-cards.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about-me', component: AboutMeComponent },

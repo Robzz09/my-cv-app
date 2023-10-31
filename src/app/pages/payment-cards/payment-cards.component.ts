@@ -10,7 +10,8 @@ export class PaymentCardsComponent {
   cards: any[] = [];
   sortBy: 'ASC' | 'DESC' = 'ASC';
   constructor(private paymentService: PaymentCardsService) {}
-  ngOnInit() {
+
+ ngOnInit() {
     this.paymentService.getData().subscribe(
       (card: any) => {
         if (Array.isArray(card.data)) {

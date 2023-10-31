@@ -14,7 +14,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { PaymentCardsComponent } from './pages/payment-cards/payment-cards/payment-cards.component';
+import { PaymentCardsComponent } from './pages/payment-cards/payment-cards.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -37,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProgressbarModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

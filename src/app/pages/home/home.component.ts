@@ -15,8 +15,8 @@ export class HomeComponent implements AfterViewInit {
   ];
   currentPhraseIndex = 0;
   currentPhrase = '';
-  typingDelay = 100; 
-  erasingDelay = 50; 
+  typingDelay = 100;
+  erasingDelay = 50;
   startTypingTimeout: any;
 
   ngAfterViewInit() {
@@ -30,6 +30,7 @@ export class HomeComponent implements AfterViewInit {
     }
   }
 
+  //scrittura della frase lettera per lettera
   typePhrase(phrase: string) {
     const typingElement = this.typingText.nativeElement;
     if (this.currentPhrase !== phrase) {
@@ -42,10 +43,11 @@ export class HomeComponent implements AfterViewInit {
     } else {
       setTimeout(() => {
         this.erasePhrase();
-      }, 1000); 
+      }, 1000);
     }
   }
 
+  //cancello la frase lettera per lettera
   erasePhrase() {
     const typingElement = this.typingText.nativeElement;
     if (this.currentPhrase !== '') {
@@ -63,7 +65,7 @@ export class HomeComponent implements AfterViewInit {
         (this.currentPhraseIndex + 1) % this.phrases.length;
       setTimeout(() => {
         this.startTyping();
-      }, 500); 
+      }, 500);
     }
   }
 }

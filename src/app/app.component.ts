@@ -11,6 +11,8 @@ export class AppComponent {
   isContactPage: boolean = false;
 
   constructor(private router: Router) {
+
+    //per togliere il footer nel contact page
     this.router.events.subscribe((val) => {
       this.isContactPage = this.router.url.includes('contact');
     });

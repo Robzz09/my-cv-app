@@ -40,10 +40,8 @@ export class ContactComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      // this.successMessage = 'Il messaggio è stato inviato con successo!';
       this.contactForm.reset();
       this.submitForm();
-      // console.log(this.contactForm.value);
     }
   }
   submitForm() {
@@ -61,9 +59,6 @@ export class ContactComponent {
       modalEmail.textContent = email;
       modalMessage.textContent = message;
       modalSucces.textContent = this.successMessage;
-
-      const modal = document.getElementById('modal');
-      //modal.style.display = 'block';
     }
   }
 }

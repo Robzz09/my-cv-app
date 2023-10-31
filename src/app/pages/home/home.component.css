@@ -19,7 +19,7 @@ button {
   font-weight: bold;
   white-space: nowrap;
 }
-
+/* per far comparire la stanghetta lampeggiante, effetto input di testo */
 .text_change::after {
   content: "|";
   display: inline-block;

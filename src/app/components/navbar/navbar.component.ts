@@ -20,8 +20,8 @@ export class NavbarComponent {
   isScrolled: boolean = false;
   isLightNavbar: boolean = false;
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(event: Event) {
+  @HostListener('window:scroll')
+  onWindowScroll() {
     this.isScrolled = window.scrollY >= 150;
   }
   constructor(private router: Router) {
