@@ -14,10 +14,15 @@
       aria-controls="navbarNav"
       aria-expanded="false"
       aria-label="Toggle navigation"
+      [attr.aria-expanded]="!isNavbarCollapsed"
     >
       <span><fa-icon [icon]="faBars" class="baricon"></fa-icon></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div
+      class="collapse navbar-collapse show"
+      id="navbarNav"
+      [ngClass]="{ show: !isNavbarCollapsed }"
+    >
       <ul class="navbar-nav mx-auto">
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['/home']">Home</a>

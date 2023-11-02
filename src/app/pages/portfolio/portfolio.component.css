@@ -138,6 +138,12 @@ button {
   border: none;
   border-radius: 5px;
 }
+.custom-width {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (min-width: 1200px) {
   .card {
     width: 50%;
@@ -147,10 +153,16 @@ button {
   .card {
     width: 70%;
   }
+  .custom-width {
+    width: 100%;
+  }
 }
 @media (max-width: 500px) {
   .card {
     width: 90%;
+  }
+  .custom-width {
+    width: 100%;
   }
 }
 .user-avatar {
@@ -190,4 +202,7 @@ button {
 }
 .icon4:hover {
   color: rgb(191, 0, 255) !important;
+}
+.btn-modal {
+  width: 100%;
 }

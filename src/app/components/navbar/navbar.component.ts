@@ -19,6 +19,7 @@ export class NavbarComponent {
   faBars = faBars;
   isScrolled: boolean = false;
   isLightNavbar: boolean = false;
+  isNavbarCollapsed: boolean = true;
 
   @HostListener('window:scroll')
   onWindowScroll() {
@@ -29,6 +30,7 @@ export class NavbarComponent {
       if (event instanceof NavigationEnd) {
         this.updateNavbarClass(event.url);
         window.scrollTo(0, 0);
+        this.isNavbarCollapsed = true;
       }
     });
   }
@@ -43,5 +45,8 @@ export class NavbarComponent {
     ) {
       this.isLightNavbar = true;
     }
+  }
+  toggleNavbar() {
+    this.isNavbarCollapsed = !this.isNavbarCollapsed;
   }
 }

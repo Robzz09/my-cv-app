@@ -1,3 +1,6 @@
+<button (click)="goToTop()" class="btn btn go-top-button">
+  <fa-icon [icon]="faArrowUp" class="arrow-up-icon"></fa-icon>
+</button>
 <div class="pt-5">
   <div class="text-center div_testo">
     <h1 class="bg_text text_bg" id="about-me"><b>ABOUT ME</b></h1>
@@ -41,7 +44,7 @@
       <hr />
       <h3 class="pb-3"><b>From:</b> Turin, Italy</h3>
       <a
-        class="btn btn-primary rounded-5 ps-5 pe-5 pt-3 pb-3 shadow-sm"
+        class="btn btn-primary rounded-5 ps-5 pe-5 pt-2 pb-2 shadow-sm"
         href="/assets/pdf/CV_Boboc.pdf"
         download
       >
@@ -277,10 +280,12 @@
       </div>
       <div class="text-center pt-4">
         <a
-          class="btn btn-outline-secondary rounded-pill shadow-none pt-3 pb-0 pb-0 ps-5 pe-5"
+          class="btn btn-outline-secondary rounded-pill shadow-none pt-2 pb-2 ps-5 pe-5"
           href="/assets/pdf/CV_Boboc.pdf"
           download=""
-          ><h2>Download CV <fa-icon [icon]="faDownload" class=""></fa-icon></h2>
+          ><h2 class="fs-6 mb-0">
+            Download CV <fa-icon [icon]="faDownload" class=""></fa-icon>
+          </h2>
         </a>
       </div>
     </div>

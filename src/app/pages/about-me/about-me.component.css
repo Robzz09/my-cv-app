@@ -156,3 +156,17 @@ h3 {
   font-size: 18px;
   color: #4c4d4d;
 }
+.go-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  display: none;
+  z-index: 99;
+  color: #4c4d4d;
+}
+.show-button {
+  display: block;
+}
+.arrow-up-icon {
+  font-size: 24px;
+}
