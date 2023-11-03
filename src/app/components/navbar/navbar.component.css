@@ -78,6 +78,9 @@ a:focus {
 .icon3:hover {
   color: rgb(255, 0, 128) !important;
 }
+.icon4:hover {
+  color: rgb(191, 0, 255) !important;
+}
 @keyframes slideDown {
   from {
     transform: translateY(-100%);

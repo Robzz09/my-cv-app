@@ -156,6 +156,9 @@ button {
   .custom-width {
     width: 100%;
   }
+  .img-button {
+    width: 70%;
+  }
 }
 @media (max-width: 500px) {
   .card {
