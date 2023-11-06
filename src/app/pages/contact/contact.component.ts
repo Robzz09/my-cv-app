@@ -5,6 +5,7 @@ import {
   faFacebook,
   faGithub,
 } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -20,6 +21,7 @@ export class ContactComponent {
   faInstagram = faInstagram;
   faFacebook = faFacebook;
   faGitHub = faGithub;
+  faLinkedin = faLinkedin;
   contactForm: FormGroup;
   submittedData: { name: string; email: string; message: string } | null = null;
   successMessage: string = 'Il messaggio è stato inviato con successo!';

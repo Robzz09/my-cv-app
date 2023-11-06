@@ -104,7 +104,8 @@ a:hover {
 .icon1,
 .icon2,
 .icon3,
-.icon4 {
+.icon4,
+.icon5 {
   font-size: 25px;
 }
 .icon1:hover {
@@ -118,6 +119,9 @@ a:hover {
 }
 .icon4:hover {
   color: rgb(191, 0, 255) !important;
+}
+.icon5:hover {
+  color: #0d6efd !important;
 }
 * {
   font-family: Poppins, sans-serif;
