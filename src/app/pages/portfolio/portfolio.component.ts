@@ -5,6 +5,7 @@ import {
   faFacebook,
   faGithub,
 } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-portfolio',
@@ -17,6 +18,7 @@ export class PortfolioComponent {
   faFacebook = faFacebook;
   faGitHub = faGithub;
   faStar = faStar;
+  faLinkedin = faLinkedin;
   selectedCategory: string = 'all';
   currentImage: number = 1;
   currentCarousel: number = 1;

@@ -191,7 +191,8 @@ button {
 .icon1,
 .icon2,
 .icon3,
-.icon4 {
+.icon4,
+.icon5 {
   font-size: 20px;
 }
 .icon1:hover {
@@ -205,6 +206,9 @@ button {
 }
 .icon4:hover {
   color: rgb(191, 0, 255) !important;
+}
+.icon5:hover {
+  color: #0d6efd !important;
 }
 .btn-modal {
   width: 100%;
